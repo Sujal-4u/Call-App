@@ -25,12 +25,20 @@
       <input type="text" placeholder="e.g. Quick appointment call"><br>
       <!--here are the radio buttons for selection-->
       <label for="select">Categories</label><br>
-      <input type="radio" placeholder="Emergency">
-      <input type="radio" placeholder="Important">
-      <input type="radio" placeholder="Urgent">
-      <input type="radio" placeholder="No Rush">
+      <input type="radio" id="emergency" name="category" value="Emergency">
+<label for="emergency">Emergency</label><br>
+
+<input type="radio" id="important" name="category" value="Important">
+<label for="important">Important</label><br>
+
+<input type="radio" id="urgent" name="category" value="Urgent">
+<label for="urgent">Urgent</label><br>
+
+<input type="radio" id="no-rush" name="category" value="No Rush">
+<label for="no-rush">No Rush</label><br>
+
       <!--buttons here-->
-      <button id="creatBtn">Create Note</button>
+      <button id="creatBtn">Create Note</button><br>
       <button id="closeBtn">Close</button>
       
     </form>
