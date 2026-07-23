@@ -95,7 +95,7 @@
 body{
   height: 100%;
   width: 100%;
-  background-color: var("--bg-color");
+  background-color: var(--bg-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -110,11 +110,11 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var("--space-md");
-  background-color: var("--card-color");
+  gap: var(--space-md);
+  background-color: var(--card-color);
 }
 .left-icons{
   flex-direction: column;
-  width: 60px;
-  margin-right: var("--space-sm");
+  width: 50px;
+  margin-right: var(--space-sm);
 }
