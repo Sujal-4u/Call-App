@@ -117,12 +117,22 @@ body{
   
 }
 
-.left-icons < svg path{
+.left-icons  {
   flex-direction: column;
   width: 15px;
-  margin-right: 12px;
-  border-radius: 50%;
-  border-color:1px solid var(--border-color);
-  background-color: var(--card-color);
+  margin-right: 8px;
+  border-radius: 16px;
+  padding: 16px;
 }
+.addBtn{
+  border-radius: 50%;
+  border-color: 1 px solid var(--border-color);
+}
+#upBtn{
+  border-radius: 50%;
+  border-color: 1 px solid var(--border-color);
+}
+#downBtn{
+  border-radius: 50%;
+  border-color: 1 px solid var(--border-color);
 }
