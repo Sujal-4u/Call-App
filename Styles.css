@@ -53,6 +53,14 @@ body{
   background-color: #e1e1e1e1;
 }
 .stack{
+  background-color: red;
+  flex: 1;
+  height: 75%;
+  margin: 10px;
+}
+.cards{
+  background-color: white;
+  height: 100%;
   
 }
 
