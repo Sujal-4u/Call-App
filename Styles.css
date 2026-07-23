@@ -12,6 +12,8 @@
 
 /* Border */
 --border-color: #E5E7EB;
+/* close button*/
+--close: #EF4444;
 }
 *{
   margin: 0;
