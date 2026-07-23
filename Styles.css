@@ -46,7 +46,7 @@ body{
   display: flex;
   flex-direction: column;
   width: 72px;
-  border-radius: 16px;
+  border-radius: 40px;
   gap: 24px;
   background-color: #e5e7eb;
   padding: 12px;
@@ -70,9 +70,7 @@ body{
   padding: 8px;
   background-color: #f3f0ff;
 }
-svg{
-  background-color: #374151;
-}
+
 .stack{
   background-color: ;
   flex: 1;
@@ -137,7 +135,6 @@ svg{
 .right-colors{
   height: 200px;
   width: 40px;
-  background-color: #e5e7eb;
   margin: 100px 0;
   display: flex;
   flex-direction: column;
@@ -149,12 +146,15 @@ svg{
   height: 40px;
   border-radius: 50%;
 }
-#pupole{
+#purple{
   background-color: #c4b5fd;
 }
 #orange{
   background-color: #fdba74;
 }
 #green{
-  background-color: ;
+  background-color: #86efac;
+}
+#black{
+  background-color: #111111;
 }
