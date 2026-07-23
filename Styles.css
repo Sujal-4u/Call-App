@@ -111,9 +111,10 @@ body{
   align-items: center;
   justify-content: center;
   gap: var("--space-md");
-  
+  background-color: var("--card-color");
 }
 .left-icons{
   flex-direction: column;
   width: 60px;
+  margin-right: var("--space-sm");
 }
