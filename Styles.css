@@ -112,9 +112,19 @@ body{
   justify-content: center;
   gap: var(--space-md);
   background-color: var(--card-color);
+  width: var(--card-width);
+  height: var(--card-height);
+  
 }
 .left-icons{
   flex-direction: column;
   width: 50px;
   margin-right: var(--space-sm);
+}
+.addBtn{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border-collapse: var(--border-color);
+  background-color: var(--card-color);
 }
