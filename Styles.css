@@ -116,6 +116,7 @@ body{
   height: var(--card-height);
   
 }
+svg,
 .left-icons{
   flex-direction: column;
   width: 50px;
