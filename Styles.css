@@ -1,28 +1,32 @@
 :root{
   /* Background */
---bg-color: #F5F7FB;
+  --bg-color: #F5F7FB;
 
-/* Main Card & Form */
---card-color: #FFFFFF;
---form-color: #FFFFFF;
+  /* Main Card & Form */
+  --card-color: #FFFFFF;
+  --form-color: #FFFFFF;
 
-/* Text */
---text-primary: #1F2937;
---text-secondary: #6B7280;
+  /* Text */
+  --text-primary: #1F2937;
+  --text-secondary: #6B7280;
 
-/* Border */
---border-color: #E5E7EB;
-/* close button*/
---close: #EF4444;
---close-hover: #DC2626;
-/*primary color*/
---primary-hover: #1D4ED8;
+  /* Border */
+  --border-color: #E5E7EB;
+
+  /* close button */
+  --close: #EF4444;
+  --close-hover: #DC2626;
+
+  /* primary color */
+  --primary-hover: #1D4ED8;
 }
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body{
   height: 100vh;
   width: 100vw;
@@ -32,8 +36,9 @@ body{
   background-color: var(--bg-color);
 }
 
+/* Hidden by default via .hidden class in the HTML — toggle this class in JS
+   instead of fighting a duplicated display property here. */
 .form-container{
-  /*display: none;*/
   position: absolute;
   width: 550px;
   display: flex;
@@ -47,6 +52,10 @@ body{
   border-radius: 12px;
   color: var(--text-primary);
 }
+.hidden{
+  display: none;
+}
+
 form{
   height: 100%;
   width: 100%;
@@ -75,7 +84,7 @@ form{
   border: 1px solid rgba(1,1,1,0.8);
   font-weight: 500;
 }
-#creatBtn{
+#createBtn{
   background-color: var(--border-color);
   color: #111;
 }
@@ -83,24 +92,18 @@ form{
   background-color: var(--close);
   color: #ffffff;
 }
+#closeBtn:hover{
+  background-color: var(--close-hover);
+}
 label{
   font-weight: bold;
-  
-}
-#emergency{
-  color: #fdba74;
-}
-#urgent{
-  color: #c5b5fd;
-}
-#important{
-  color: #111;
-}
-#no-rush{
-  color: #86efac;
 }
 
-
+/* color styling on radio inputs needs accent-color, not color */
+#emergency{ accent-color: #fdba74; }
+#urgent{ accent-color: #c5b5fd; }
+#important{ accent-color: #111; }
+#no-rush{ accent-color: #86efac; }
 
 
 .note-container{
@@ -126,18 +129,8 @@ label{
   padding: 16px;
   margin-top: 16px;
 }
-.addBtn{
-  border: 1px solid #ddd6fe;
-  border-radius: 50%;
-  padding: 8px;
-  background-color: #f3f0ff;
-}
-#upBtn{
-  border: 1px solid #ddd6fe;
-  border-radius: 50%;
-  padding: 8px;
-  background-color: #f3f0ff;
-}
+.addBtn,
+#upBtn,
 #downBtn{
   border: 1px solid #ddd6fe;
   border-radius: 50%;
@@ -146,11 +139,18 @@ label{
 }
 
 .stack{
+  position: relative;
   flex: 1;
   height: 85%;
   margin: 10px;
 }
+
+/* All three .cards live inside .stack, absolutely positioned so they visually stack */
 .cards{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   border: 1px solid #222;
   background-color: var(--card-color);
   height: 100%;
@@ -159,20 +159,32 @@ label{
   gap: 4px;
   padding: 12px;
   border-radius: 4px 4px 16px 16px;
-  z-index: 1;
 }
+.cards:nth-child(1){
+  z-index: 3;
+}
+.cards:nth-child(2){
+  z-index: 2;
+  transform: translateY(10px) scale(0.98);
+  opacity: 0.9;
+}
+.cards:nth-child(3){
+  z-index: 1;
+  transform: translateY(20px) scale(0.96);
+  opacity: 0.7;
+}
+
 .cards img {
   height: 60px;
   width: 60px;
   border-radius: 50%;
   color: var(--text-primary);
-  
 }
 .cards h2{
   font-weight: bolder;
   font-size: 26px;
   margin-bottom: 16px;
-} 
+}
 .info{
   font-size: 19px;
   font-weight: 400;
@@ -195,13 +207,13 @@ label{
   font-size: 16px;
   font-weight: 700;
 }
-#callBtn{
+.call-btn{
   margin-top: 20px;
   background-color: #2563eb;
   color: #ffffff;
   border: 1px solid #e5e7eb;
 }
-#msgBtn{
+.msg-btn{
   background-color: #ffffff;
   color: #222;
 }
@@ -219,15 +231,7 @@ label{
   height: 40px;
   border-radius: 50%;
 }
-#purple{
-  background-color: #c4b5fd;
-}
-#orange{
-  background-color: #fdba74;
-}
-#green{
-  background-color: #86efac;
-}
-#black{
-  background-color: #111111;
-}
+#purple{ background-color: #c4b5fd; }
+#orange{ background-color: #fdba74; }
+#green{ background-color: #86efac; }
+#black{ background-color: #111111; }
