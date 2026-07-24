@@ -145,33 +145,43 @@ label{
   margin: 10px;
 }
 
-/* All three .cards live inside .stack, absolutely positioned so they visually stack */
+/* The real, content-bearing card. Always on top. */
 .cards{
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
+  z-index: 3;
   width: 100%;
+  height: 100%;
   border: 1px solid #222;
   background-color: var(--card-color);
-  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 4px;
   padding: 12px;
   border-radius: 4px 4px 16px 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
 }
-.cards:nth-child(1){
-  z-index: 3;
+
+/* Empty decorative layers behind the front card — just a peek of edge,
+   no text, so nothing can double up or look "ghosted". */
+.card-shadow{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--card-color);
+  border: 1px solid #ddd;
+  border-radius: 4px 4px 16px 16px;
 }
-.cards:nth-child(2){
+.shadow-one{
   z-index: 2;
-  transform: translateY(10px) scale(0.98);
-  opacity: 0.9;
+  transform: translate(6px, 10px);
+  opacity: 0.85;
 }
-.cards:nth-child(3){
+.shadow-two{
   z-index: 1;
-  transform: translateY(20px) scale(0.96);
-  opacity: 0.7;
+  transform: translate(12px, 20px);
+  opacity: 0.6;
 }
 
 .cards img {
