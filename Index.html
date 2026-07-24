@@ -8,23 +8,24 @@
   <title>Call App by SrK</title>
 </head>
 <body>
-  <div class="form-container">
-    <form>
+
+  <div class="form-container hidden" id="formContainer">
+    <form id="callForm">
       <h2>Call App</h2>
-      <!--Image here-->
+
       <label for="imageUrl">Image URL</label><br>
-      <input required class="inp" type="text" placeholder="https://example.com/photo.jpg"><br><br>
-      <!--name here-->
+      <input required class="inp" id="imageUrl" type="text" placeholder="https://example.com/photo.jpg"><br><br>
+
       <label for="name">Full Name</label><br>
-      <input required class="inp" type="text" placeholder="Enter full name"><br><br>
-      <!--city here-->
+      <input required class="inp" id="name" type="text" placeholder="Enter full name"><br><br>
+
       <label for="city">Home Town</label><br>
-      <input  type="text" required class="inp"  placeholder="Enter home town"><br><br>
-      <!--purpose here-->
+      <input required class="inp" id="city" type="text" placeholder="Enter home town"><br><br>
+
       <label for="purpose">Purpose</label><br>
-      <input type="text" class="inp" required placeholder="e.g. Quick appointment call"><br><br>
-      <!--here are the radio buttons for selection-->
-      <label  for="select">Categories</label><br><br>
+      <input required class="inp" id="purpose" type="text" placeholder="e.g. Quick appointment call"><br><br>
+
+      <label>Categories</label><br><br>
       <input required type="radio" id="emergency" name="category" value="Emergency">
       <label for="emergency">Emergency</label><br>
 
@@ -37,15 +38,14 @@
       <input type="radio" id="no-rush" name="category" value="No Rush">
       <label for="no-rush">No Rush</label><br><br>
 
-      <!--buttons here-->
-      <button class="form-btn" id="creatBtn">Create Note</button><br><br>
-      <button class="form-btn" id="closeBtn">Close</button>
-      
+      <button type="submit" class="form-btn" id="createBtn">Create Note</button><br><br>
+      <button type="button" class="form-btn" id="closeBtn">Close</button>
     </form>
   </div>
+
   <div class="note-container">
     <div class="left-icons">
-      <div class="addBtn">
+      <div class="addBtn" id="addBtn">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 160-160 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l160 0 0 160c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160 160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-160 0 0-160z"/></svg>
       </div>
       <div id="upBtn">
@@ -55,58 +55,61 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M169.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 306.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
       </div>
     </div>
-    <div class="stack">
+
+    <!-- All cards live inside .stack so the nth-child stacking CSS actually applies -->
+    <div class="stack" id="stack">
       <div class="cards">
         <img src="https://i.pinimg.com/236x/f4/96/ff/f496ffcd0c99798743d1be81d972a815.jpg">
         <h2>Sujal</h2>
-        <div class="info" id="address">
+        <div class="info card-address">
           <p>Home Town</p>
           <p>Singapur</p>
         </div>
-        <div class="info" id="purpose">
+        <div class="info card-purpose">
           <p>Booking</p>
           <p>Urgent meeting</p>
         </div>
         <div class="action-btn">
-          <button class="action" id="callBtn">Call</button><br>
-          <button class="action" id="msgBtn">Message</button>
+          <button class="action call-btn">Call</button><br>
+          <button class="action msg-btn">Message</button>
         </div>
       </div>
-    </div>
-    <div class="cards">
+
+      <div class="cards">
         <img src="https://i.pinimg.com/236x/f4/96/ff/f496ffcd0c99798743d1be81d972a815.jpg">
         <h2>Sujal</h2>
-        <div class="info" id="address">
+        <div class="info card-address">
           <p>Home Town</p>
           <p>Singapur</p>
         </div>
-        <div class="info" id="purpose">
+        <div class="info card-purpose">
           <p>Booking</p>
           <p>Urgent meeting</p>
         </div>
         <div class="action-btn">
-          <button class="action" id="callBtn">Call</button><br>
-          <button class="action" id="msgBtn">Message</button>
+          <button class="action call-btn">Call</button><br>
+          <button class="action msg-btn">Message</button>
         </div>
       </div>
-    </div>
-    <div class="cards">
+
+      <div class="cards">
         <img src="https://i.pinimg.com/236x/f4/96/ff/f496ffcd0c99798743d1be81d972a815.jpg">
         <h2>Sujal</h2>
-        <div class="info" id="address">
+        <div class="info card-address">
           <p>Home Town</p>
           <p>Singapur</p>
         </div>
-        <div class="info" id="purpose">
+        <div class="info card-purpose">
           <p>Booking</p>
           <p>Urgent meeting</p>
         </div>
         <div class="action-btn">
-          <button class="action" id="callBtn">Call</button><br>
-          <button class="action" id="msgBtn">Message</button>
+          <button class="action call-btn">Call</button><br>
+          <button class="action msg-btn">Message</button>
         </div>
       </div>
     </div>
+
     <div class="right-colors">
       <div id="black" class="color"></div>
       <div id="purple" class="color"></div>
@@ -114,6 +117,7 @@
       <div id="green" class="color"></div>
     </div>
   </div>
+
   <script src="Script.js"></script>
 </body>
 </html>
