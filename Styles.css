@@ -74,14 +74,31 @@ form{
   border: 1px solid rgba(1,1,1,0.8);
   font-weight: 500;
 }
-.createBtn{
-  background-color: #fff;
+#creatBtn{
+  background-color: var(--border-color);
   color: #111;
 }
-.closeBtn{
+#closeBtn{
   background-color: var(--close);
+  color: #ffffff;
+}
+label{
+  font-weight: bold;
+  
+}
+#emergency{
+  color: #fdba74;
+}
+#urgent{
+  color: #c5b5fd;
+}
+#important{
   color: #111;
 }
+#no-rush{
+  color: #86efac;
+}
+
 
 
 
