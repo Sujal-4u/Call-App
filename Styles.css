@@ -53,6 +53,7 @@ body{
   color: var(--text-primary);
 }
 .hidden{
+  z-index: 100;
   display: none;
 }
 
