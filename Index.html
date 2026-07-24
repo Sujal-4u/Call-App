@@ -56,52 +56,23 @@
       </div>
     </div>
 
-    <!-- All cards live inside .stack so the nth-child stacking CSS actually applies -->
+    <!-- Only ONE card holds real content. The two shadow divs behind it are
+         empty/decorative — they create the "stack of cards" peek effect
+         without duplicating text (that duplication was the ghosting bug). -->
     <div class="stack" id="stack">
-      <div class="cards">
-        <img src="https://i.pinimg.com/236x/f4/96/ff/f496ffcd0c99798743d1be81d972a815.jpg">
-        <h2>Sujal</h2>
-        <div class="info card-address">
-          <p>Home Town</p>
-          <p>Singapur</p>
-        </div>
-        <div class="info card-purpose">
-          <p>Booking</p>
-          <p>Urgent meeting</p>
-        </div>
-        <div class="action-btn">
-          <button class="action call-btn">Call</button><br>
-          <button class="action msg-btn">Message</button>
-        </div>
-      </div>
+      <div class="card-shadow shadow-two"></div>
+      <div class="card-shadow shadow-one"></div>
 
-      <div class="cards">
+      <div class="cards" id="frontCard">
         <img src="https://i.pinimg.com/236x/f4/96/ff/f496ffcd0c99798743d1be81d972a815.jpg">
-        <h2>Sujal</h2>
+        <h2 id="cardName">Sujal</h2>
         <div class="info card-address">
           <p>Home Town</p>
-          <p>Singapur</p>
+          <p id="cardCity">Singapur</p>
         </div>
         <div class="info card-purpose">
           <p>Booking</p>
-          <p>Urgent meeting</p>
-        </div>
-        <div class="action-btn">
-          <button class="action call-btn">Call</button><br>
-          <button class="action msg-btn">Message</button>
-        </div>
-      </div>
-
-      <div class="cards">
-        <img src="https://i.pinimg.com/236x/f4/96/ff/f496ffcd0c99798743d1be81d972a815.jpg">
-        <h2>Sujal</h2>
-        <div class="info card-address">
-          <p>Home Town</p>
-          <p>Singapur</p>
-        </div>
-        <div class="info card-purpose">
-          <p>Booking</p>
-          <p>Urgent meeting</p>
+          <p id="cardPurpose">Urgent meeting</p>
         </div>
         <div class="action-btn">
           <button class="action call-btn">Call</button><br>
