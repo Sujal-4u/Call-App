@@ -73,3 +73,51 @@ form.addEventListener("submit", function(evt){
    });
    callForm.reset();
 });
+
+function showCards(){
+  let allTasks = JSON.par se(localStorage.getItem("tasks"));
+  allTasks.forEach(function(task){
+    
+  const card = document.createElement("div");
+  card.className = "cards";
+
+  const img = document.createElement("img");
+  img.src = data.imageUrl;
+  img.alt = data.name;
+
+  const h2 = document.createElement("h2");
+  h2.className = "card-name";
+  h2.textContent = data.name;
+
+  const addressRow = document.createElement("div");
+  addressRow.className = "info card-address";
+  const addressLabel = document.createElement("p");
+  addressLabel.textContent = "Home Town";
+  const addressValue = document.createElement("p");
+  addressValue.className = "card-city";
+  addressValue.textContent = data.city;
+  addressRow.append(addressLabel, addressValue);
+
+  const purposeRow = document.createElement("div");
+  purposeRow.className = "info card-purpose";
+  const purposeLabel = document.createElement("p");
+  purposeLabel.textContent = "Booking";
+  const purposeValue = document.createElement("p");
+  purposeValue.className = "card-purpose-text";
+  purposeValue.textContent = data.purpose;
+  purposeRow.append(purposeLabel, purposeValue);
+
+  const actions = document.createElement("div");
+  actions.className = "action-btn";
+  const callBtn = document.createElement("button");
+  callBtn.className = "action call-btn";
+  callBtn.textContent = "Call";
+  const br = document.createElement("br");
+  const msgBtn = document.createElement("button");
+  msgBtn.className = "action msg-btn";
+  msgBtn.textContent = "Message";
+  actions.append(callBtn, br, msgBtn);
+
+  card.append(img, h2, addressRow, purposeRow, actions);
+  });
+}
