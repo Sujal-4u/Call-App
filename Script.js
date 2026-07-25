@@ -1,93 +1,88 @@
-let addNote = document.querySelector(".addBtn");
-let callForm = document.querySelector("form");
-let form = document.querySelector(".form-container");
+let addNote = document.querySelector("#addBtn");
+let callForm = document.querySelector("#callForm");
+let form = document.querySelector("#formContainer");
 let closeForm = document.querySelector("#closeBtn");
 const imageUrlInput = document.querySelector("#imageUrl");
 const nameInput = document.querySelector("#name");
 const cityInput = document.querySelector("#city");
 const purposeInput = document.querySelector("#purpose");
 const categories = document.querySelectorAll("input[name='category']");
-const submitBtn = document.querySelector("#createBtn");
+const stack = document.querySelector("#stack");
 
-//CODE STARTS HERE HUI HUI :)
 // checking local storage and saving data
-function saveToLocalStorage(obj){
-  if (localStorage.getItem("tasks") == null){
-    let oldTasks = [];
-    oldTasks.push(obj);
-    localStorage.setItem("tasks", JSON.stringify(oldTasks));
-  } else {
-    let oldTasks = localStorage.getItem("tasks");
-    oldTasks = JSON.parse(oldTasks);
-    oldTasks.push(obj);
-    localStorage.setItem("tasks", JSON.stringify(oldTasks));
-  }
+function saveToLocalStorage(obj) {
+  const stored = localStorage.getItem("tasks");
+  const oldTasks = stored ? JSON.parse(stored) : [];
+  oldTasks.push(obj);
+  localStorage.setItem("tasks", JSON.stringify(oldTasks));
 }
 
-addNote.addEventListener("click", function(){
-  form.style.display = "initial";
-});
-closeForm.addEventListener("click", function(){
-  form.style.display = "none";
+addNote.addEventListener("click", function () {
+  form.classList.remove("hidden");
 });
 
-form.addEventListener("submit", function(evt){
+closeForm.addEventListener("click", function () {
+  form.classList.add("hidden");
+});
+
+// IMPORTANT: this must be on the actual <form> element (#callForm), not the
+// wrapper div — "submit" only fires on <form> elements. Attaching it to the
+// div meant this code never ran; clicking the submit button just triggered
+// the browser's native form submission (a page reload) instead.
+callForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
+
   let selected = false;
-  categories.forEach(function(dets){
-    if (dets.checked){
+  categories.forEach(function (dets) {
+    if (dets.checked) {
       selected = dets.value;
     }
   });
-  
-  if (imageUrlInput.value.trim() === ""){
+
+  if (imageUrlInput.value.trim() === "") {
     alert("Please Enter image URL");
     return;
   }
-  if (nameInput.value.trim() === ""){
+  if (nameInput.value.trim() === "") {
     alert("Please Enter Name");
     return;
   }
-  if (cityInput.value.trim() === ""){
+  if (cityInput.value.trim() === "") {
     alert("Please Enter Home Town");
     return;
   }
-  if (purposeInput.value.trim() === ""){
+  if (purposeInput.value.trim() === "") {
     alert("Please Enter Purpose");
     return;
   }
-  if (!selected){
+  if (!selected) {
     alert("Please select a category");
     return;
   }
+
   let imageUrl = imageUrlInput.value;
   let name = nameInput.value;
   let city = cityInput.value;
   let purpose = purposeInput.value;
-  saveToLocalStorage({
-    imageUrl,
-    name,
-    city,
-    purpose,
-    selected,
-   });
-   callForm.reset();
+
+  saveToLocalStorage({ imageUrl, name, city, purpose, selected });
+
+  callForm.reset();
+  form.classList.add("hidden");
+  showCards(); // re-render now that a new task was saved
 });
 
-function showCards(){
-  let allTasks = JSON.par se(localStorage.getItem("tasks"));
-  allTasks.forEach(function(task){
-  
+function createCardElement(task) {
   const card = document.createElement("div");
   card.className = "cards";
 
   const img = document.createElement("img");
-  img.src = data.imageUrl;
-  img.alt = data.name;
+  img.src = task.imageUrl;
+  img.alt = task.name;
 
   const h2 = document.createElement("h2");
   h2.className = "card-name";
-  h2.textContent = data.name;
+  h2.textContent = task.name;
 
   const addressRow = document.createElement("div");
   addressRow.className = "info card-address";
@@ -95,7 +90,7 @@ function showCards(){
   addressLabel.textContent = "Home Town";
   const addressValue = document.createElement("p");
   addressValue.className = "card-city";
-  addressValue.textContent = data.city;
+  addressValue.textContent = task.city;
   addressRow.append(addressLabel, addressValue);
 
   const purposeRow = document.createElement("div");
@@ -104,7 +99,7 @@ function showCards(){
   purposeLabel.textContent = "Booking";
   const purposeValue = document.createElement("p");
   purposeValue.className = "card-purpose-text";
-  purposeValue.textContent = data.purpose;
+  purposeValue.textContent = task.purpose;
   purposeRow.append(purposeLabel, purposeValue);
 
   const actions = document.createElement("div");
@@ -119,6 +114,18 @@ function showCards(){
   actions.append(callBtn, br, msgBtn);
 
   card.append(img, h2, addressRow, purposeRow, actions);
+  return card;
+}
+
+function showCards() {
+  stack.innerHTML = ""; // clear before re-rendering, or every save duplicates the whole list
+
+  const stored = localStorage.getItem("tasks");
+  const allTasks = stored ? JSON.parse(stored) : [];
+
+  allTasks.forEach(function (task) {
+    stack.appendChild(createCardElement(task));
   });
 }
+
 showCards();
