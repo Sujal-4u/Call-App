@@ -1,4 +1,5 @@
 let addNote = document.querySelector(".addBtn");
+let callForm = document.querySelector("form");
 let form = document.querySelector(".form-container");
 let closeForm = document.querySelector("#closeBtn");
 const imageUrlInput = document.querySelector("#imageUrl");
@@ -14,7 +15,7 @@ function saveToLocalStorage(obj){
   if (localStorage.getItem("tasks") == null){
     let oldTasks = [];
     oldTasks.push(obj);
-    localStorage.setItem("task", JSON.stringify(oldTasks));
+    localStorage.setItem("tasks", JSON.stringify(oldTasks));
   } else {
     let oldTasks = localStorage.getItem("tasks");
     oldTasks = JSON.parse(oldTasks);
@@ -70,5 +71,5 @@ form.addEventListener("submit", function(evt){
     purpose,
     selected,
    });
-   form.reset();
+   callForm.reset();
 });
