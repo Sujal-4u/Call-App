@@ -1,4 +1,4 @@
-let addNote = document.querySelector("#addBtn");
+let addNote = document.querySelector(".addBtn");
 let form = document.querySelector(".form-container");
 let closeForm = document.querySelector("#closeBtn");
 const imageUrlInput = document.querySelector("#imageUrl");
@@ -11,7 +11,7 @@ const submitBtn = document.querySelector("#createBtn");
 //CODE STARTS HERE HUI HUI :)
 // checking local storage and saving data
 function saveToLocalStorage(obj){
-  if (localStorage.getItem("tasks" == null)){
+  if (localStorage.getItem("tasks") == null){
     let oldTasks = [];
     oldTasks.push(obj);
     localStorage.setItem("task", JSON.stringify(oldTasks));
@@ -59,12 +59,16 @@ form.addEventListener("submit", function(evt){
     alert("Please select a category");
     return;
   }
+  let imageUrl = imageUrlInput.value;
+  let name = nameInput.value;
+  let city = cityInput.value;
+  let purpose = purposeInput.value;
   saveToLocalStorage({
-    imageUrlInput.value,
-    nameInput.value,
-    cityInput.value,
-    purposeInput.value,
+    imageUrl,
+    name,
+    city,
+    purpose,
     selected,
    });
-  form.reset();
+   form.reset();
 });
