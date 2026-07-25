@@ -3,7 +3,7 @@ let form = document.querySelector(".form-container");
 let closeForm = document.querySelector("#closeBtn");
 const imageUrlInput = document.querySelector("#imageUrl");
 const nameInput = document.querySelector("#name");
-const cityInput = document.querySelector("#imsgeUrl");
+const cityInput = document.querySelector("#city");
 const purposeInput = document.querySelector("#purpose");
 const categories = document.querySelectorAll("input[name='category']");
 const submitBtn = document.querySelector("#createBtn");
@@ -21,7 +21,7 @@ form.addEventListener("submit", function(evt){
   evt.preventDefault();
   let selected = false;
   categories.forEach(function(dets){
-    if (ders.checked){
+    if (dets.checked){
       selected = dets.value;
     }
   });
