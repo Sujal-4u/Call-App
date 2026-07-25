@@ -9,6 +9,19 @@ const categories = document.querySelectorAll("input[name='category']");
 const submitBtn = document.querySelector("#createBtn");
 
 //CODE STARTS HERE HUI HUI :)
+// checking local storage and saving data
+function saveToLocalStorage(obj){
+  if (localStorage.getItem("tasks" == null)){
+    let oldTasks = [];
+    oldTasks.push(obj);
+    localStorage.setItem("task", JSON.stringify(oldTasks));
+  } else {
+    let oldTasks = localStorage.getItem("tasks");
+    oldTasks = JSON.parse(oldTasks);
+    oldTasks.push(obj);
+    localStorage.setItem("tasks", JSON.stringify(oldTasks));
+  }
+}
 
 addNote.addEventListener("click", function(){
   form.style.display = "initial";
@@ -46,4 +59,12 @@ form.addEventListener("submit", function(evt){
     alert("Please select a category");
     return;
   }
+  saveToLocalStorage({
+    imageUrlInput.value,
+    nameInput.value,
+    cityInput.value,
+    purposeInput.value,
+    selected,
+   });
+  form.reset();
 });
