@@ -77,7 +77,7 @@ form.addEventListener("submit", function(evt){
 function showCards(){
   let allTasks = JSON.par se(localStorage.getItem("tasks"));
   allTasks.forEach(function(task){
-    
+  
   const card = document.createElement("div");
   card.className = "cards";
 
@@ -121,3 +121,4 @@ function showCards(){
   card.append(img, h2, addressRow, purposeRow, actions);
   });
 }
+showCards();
