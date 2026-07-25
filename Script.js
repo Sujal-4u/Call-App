@@ -19,21 +19,31 @@ closeForm.addEventListener("click", function(){
 
 form.addEventListener("submit", function(evt){
   evt.preventDefault();
-  if (imageUrlInput.value.trim() === "null"){
+  let selected = false;
+  categories.forEach(function(dets){
+    if (ders.checked){
+      selected = dets.value;
+    }
+  });
+  
+  if (imageUrlInput.value.trim() === ""){
     alert("Please Enter image URL");
     return;
   }
-  if (nameInput.value.trim() === "null"){
+  if (nameInput.value.trim() === ""){
     alert("Please Enter Name");
     return;
   }
-  if (cityInput.value.trim() === "null"){
+  if (cityInput.value.trim() === ""){
     alert("Please Enter Home Town");
     return;
   }
-  if (purposeInput.value.trim() === "null"){
+  if (purposeInput.value.trim() === ""){
     alert("Please Enter Purpose");
     return;
   }
-  
+  if (!selected){
+    alert("Please select a category");
+    return;
+  }
 });
