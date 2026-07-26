@@ -118,6 +118,7 @@ function createCardElement(task) {
 }
 
 function showCards() {
+  console.log
   stack.innerHTML = ""; // clear before re-rendering, or every save duplicates the whole list
 
   const stored = localStorage.getItem("tasks");
