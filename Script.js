@@ -8,6 +8,9 @@ const cityInput = document.querySelector("#city");
 const purposeInput = document.querySelector("#purpose");
 const categories = document.querySelectorAll("input[name='category']");
 const stack = document.querySelector("#stack");
+const upBtn = document.querySelector("#upBtn");
+const downBtn = document.querySelector("#downBtn");
+
 
 // checking local storage and saving data
 function saveToLocalStorage(obj) {
@@ -118,7 +121,6 @@ function createCardElement(task) {
 }
 
 function showCards() {
-  console.log
   stack.innerHTML = ""; // clear before re-rendering, or every save duplicates the whole list
 
   const stored = localStorage.getItem("tasks");
@@ -128,5 +130,30 @@ function showCards() {
     stack.appendChild(createCardElement(task));
   });
 }
+function updateStack(){
+  cost cards = document.querySelectorAll(@.stack.cards);
+  cards.forEach(function(card, index){
+    card.style.zIndex = 3-index;
+    card.style.transform = `translateY(${index * 10}px) scale (${1 - index * 0.02})`;
+    card.style.opacity = `${1 - index * 0.02}`;
+  });
+}
 
 showCards();
+upBtn.addEventListener("click", function(){
+  let lastChild = stack.lastElementChild;
+  if(lastChild){
+    stack.insertBefore(lastChild, stack.firstElementChild);
+  }
+  //update
+  updateStack();
+});
+
+downBtn.addEventListener("click", function(){
+  let firstChild = stack.firstElementChild;
+  if (firstChild){
+    stack.appendChild(firstChild);
+  }
+  //update
+  updateStack();
+});
