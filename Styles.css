@@ -141,11 +141,10 @@ label{
 .stack{
   position: relative;
   flex: 1;
-  height: 85%;
+  min-height: 320px;
   margin: 10px;
-  overflow: hidden;
+  overflow: visible;
 }
-
 /* Every card sits in the exact same spot, absolutely positioned, so multiple
    .cards elements overlap instead of stacking vertically down the page.
    The last one appended to the DOM naturally renders on top. */
