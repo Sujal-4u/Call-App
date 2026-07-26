@@ -131,10 +131,10 @@ function showCards() {
   });
 }
 function updateStack(){
-  cost cards = document.querySelectorAll(@.stack.cards);
+  const cards = document.querySelectorAll(".cards");
   cards.forEach(function(card, index){
     card.style.zIndex = 3-index;
-    card.style.transform = `translateY(${index * 10}px) scale (${1 - index * 0.02})`;
+    card.style.transform = `translateY(${index * 10}px) scale(${1 - index * 0.02})`;
     card.style.opacity = `${1 - index * 0.02}`;
   });
 }
